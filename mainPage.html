@@ -1,0 +1,197 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Knowtify</title>
+<!-- Meta tag Keywords -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Transparent Sign In Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Meta tag Keywords -->
+<!-- css files -->
+<link rel="stylesheet" href="css/font-awesome.css"> <!-- Font-Awesome-Icons-CSS -->
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all" /> <!-- Style-CSS --> 
+<!-- //css files -->
+<!-- web-fonts -->
+<link href="//fonts.googleapis.com/css?family=Raleway:400,500,600,700,800" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+<!-- //web-fonts -->
+</head>
+<body class="is-loading">
+        <!--header-->
+        <div class="header-w3l">
+            <h1>Knowtify</h1>
+        </div>
+        <!--//header-->
+        <!--main-->
+        <div class="main-content-agile">
+            <div class="sub-main-w3">   
+
+						<div id="mapCanvas" style="width:100%;height:500px"></div>
+
+                
+            </div>
+        </div>
+        <!--//main-->
+        <!--footer-->
+        <div class="footer">
+            <p>&copy; 2017 Transparent Sign In Form. All rights reserved | Design by <a href="http://w3layouts.com">Kishu!!!</a></p>
+        </div>
+        <!--//footer-->
+<!-- js -->
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script src="js/jquery.vide.min.js"></script>
+
+<script>
+function initMap() {
+    var map;
+    var bounds = new google.maps.LatLngBounds();
+    var mapOptions = {
+        mapTypeId: 'roadmap'
+    };
+                    
+    // Display a map on the web page
+    map = new google.maps.Map(document.getElementById("mapCanvas"), mapOptions);
+    map.setTilt(50);
+
+
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(success, error);
+} else {
+    alert('location not supported');
+}
+
+//callbacks
+function error(msg) {
+    alert('error in geolocation');
+}
+
+	var lats = 13.3512934;
+	var lngs = 74.79323200000002;
+function success(position) {
+     lats = position.coords.latitude;
+     lngs = position.coords.longitude;
+  //  alert(lats);
+  //alert(lngs);
+    var tempcord = [lats, lngs];
+    return tempcord;
+};
+
+    // Multiple markers location, latitude, and longitude
+    var markers = [
+       ['My location', lats, lngs],
+      	['Food Court', 13.346335, 74.794151],
+        ['Caffeteria', 13.352028, 74.793178],
+       ['Aditya Mess', 13.349235, 74.789686],
+       ['Some far location', 12.349235, 73.789686],
+       ['Some far location', 14.349235, 75.789686],
+        ['MIT Canteen', 13.351227, 74.794204]
+       
+    ];
+                        
+    // Info window content
+    var infoWindowContent = [
+        ['<div class="info_content">' +
+        '<h3>ME</h3>' +
+        '<p></p>' + '</div>'],
+        ['<div class="info_content">' +
+        '<h3>Food Court</h3>' +
+        '<h5>Restaurant</h5>'+
+        '<p>The ambience of this place is just amazing coupled with the quality food.</p>'+'<p><h3>HOT OFFERS</h3><h3>Happy Hours</h3></p>'+'<button onclick="myFunction(1)" >NOTIFY!</button>'+
+        '</div>'],
+        ['<div class="info_content">' +
+        '<h3>Caffeteria</h3>' +
+        '<h5>Restaurant</h5>'+
+        '<p>Decent food at affordable rates and the staff are friendly</p>'+'<p><h3>HOT OFFERS</h3><h3>Happy Hours</h3></p>'+'<button onclick="myFunction(2)">NOTIFY!</button>'+
+        '</div>'],
+         ['<div class="info_content">' +
+        '<h3>Aditya Mess</h3>' +
+        '<h5>Restaurant</h5>'+
+        '<p>Varied options and low prices plus food quality is amazing</p>'+'<p><h3>HOT OFFERS</h3><h3>Happy Hours</h3></p>'+'<button onclick="myFunction(3)">NOTIFY!</button>'+
+        '</div>'],
+
+         ['<div class="info_content">' +
+        '<h3>Unexplored location</h3>' +
+        '<h5>Retail shop</h5>'+
+        '<p>----</p>' +
+        '</div>'],
+
+         ['<div class="info_content">' +
+        '<h3>Out of bounds</h3>' +
+        '<h5>General Shop</h5>'+
+        '<p>----</p>' +
+        '</div>'],
+
+        ['<div class="info_content">' +
+        '<h3>MIT Canteen</h3>' +
+        '<h5>Restaurant</h5>'+
+        '<p>They offer rolls, baked cakes, samosas, puffs and coffee/tea </p>'+'<p><h3>HOT OFFERS</h3><h3>Happy Hours</h3></p>'+'<button onclick="myFunction(4)">NOTIFY!</button>'+
+        '</div>']
+    ];
+        
+    // Add multiple markers to map
+    var infoWindow = new google.maps.InfoWindow(), marker, i;
+    
+    // Place each marker on the map  
+    for( i = 0; i < markers.length; i++ ) {
+        var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+        bounds.extend(position);
+        marker = new google.maps.Marker({
+            position: position,
+            map: map,
+            center: new google.maps.LatLng(13.3512934, 74.79323200000002),
+            center: {lat: 13.3512934, lng: 74.79323200000002},
+            title: markers[i][0]
+        });
+        
+        // Add info window to marker    
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+                infoWindow.setContent(infoWindowContent[i][0]);
+                infoWindow.open(map, marker);
+            }
+        })(marker, i));
+
+        // Center the map to fit all markers on the screen
+        map.fitBounds(bounds);
+    }
+
+    // Set zoom level
+    var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+        this.setZoom(15);
+        google.maps.event.removeListener(boundsListener);
+    });
+    
+}
+// Load initialize function
+//google.maps.event.addDomListener(window, 'load', initMap);
+</script>
+<script>
+function myFunction(x) {
+      {
+        location.href = "http://localhost:8888/angel/list"+x+".php";
+    };
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9lkBzkJ4lG25vWAuD3tpNxVTywfNb5EA&callback=initMap"></script>
+
+			<script>
+				if ('addEventListener' in window) {
+					window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-loading\b/, ''); });
+					document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+				}
+			</script>
+
+
+
+<!-- //js -->
+</body>
+</html>
