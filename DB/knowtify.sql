@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 20, 2017 at 01:29 PM
+-- Generation Time: Oct 20, 2017 at 03:54 PM
 -- Server version: 10.1.22-MariaDB
 -- PHP Version: 7.1.4
 
@@ -74,17 +74,17 @@ INSERT INTO `items` (`iid`, `sid`, `name`, `value`, `stock`, `descp`) VALUES
 --
 
 CREATE TABLE `location` (
-  `oid` varchar(30) COLLATE utf8_bin NOT NULL,
-  `value` varchar(30) COLLATE utf8_bin DEFAULT NULL,
-  `promo` varchar(30) COLLATE utf8_bin DEFAULT NULL,
-  `validity` varchar(30) COLLATE utf8_bin DEFAULT NULL
+  `sid` varchar(30) COLLATE utf8_bin NOT NULL,
+  `lat` varchar(30) COLLATE utf8_bin DEFAULT NULL,
+  `longi` varchar(30) COLLATE utf8_bin DEFAULT NULL,
+  `place` varchar(30) COLLATE utf8_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `location`
 --
 
-INSERT INTO `location` (`oid`, `value`, `promo`, `validity`) VALUES
+INSERT INTO `location` (`sid`, `lat`, `longi`, `place`) VALUES
 ('1', '13.3483965', '74.790832', 'Campus Store'),
 ('2', '13.3451917', '74.7944905', 'Apoorva Mess'),
 ('3', '13.3518949', '74.7909307', 'HigginBotham\'s');
@@ -96,17 +96,17 @@ INSERT INTO `location` (`oid`, `value`, `promo`, `validity`) VALUES
 --
 
 CREATE TABLE `login` (
-  `oid` int(30) NOT NULL,
-  `value` varchar(30) COLLATE utf8_bin DEFAULT NULL,
-  `promo` varchar(30) COLLATE utf8_bin DEFAULT NULL,
-  `validity` varchar(30) COLLATE utf8_bin DEFAULT NULL
+  `uid` int(30) NOT NULL,
+  `uname` varchar(30) COLLATE utf8_bin DEFAULT NULL,
+  `password` varchar(30) COLLATE utf8_bin DEFAULT NULL,
+  `type` varchar(30) COLLATE utf8_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `login`
 --
 
-INSERT INTO `login` (`oid`, `value`, `promo`, `validity`) VALUES
+INSERT INTO `login` (`uid`, `uname`, `password`, `type`) VALUES
 (1, 'navneet', 'navneet', '1'),
 (2, 'kaivan', 'kaivan', '1'),
 (3, 'aeshani', 'aeshani', '0'),
@@ -190,13 +190,13 @@ ALTER TABLE `items`
 -- Indexes for table `location`
 --
 ALTER TABLE `location`
-  ADD PRIMARY KEY (`oid`);
+  ADD PRIMARY KEY (`sid`);
 
 --
 -- Indexes for table `login`
 --
 ALTER TABLE `login`
-  ADD PRIMARY KEY (`oid`);
+  ADD PRIMARY KEY (`uid`);
 
 --
 -- Indexes for table `offers`
@@ -229,7 +229,7 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `oid` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `uid` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `shop`
 --
