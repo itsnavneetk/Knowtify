@@ -58,6 +58,11 @@ body {
 /*--//header--*/
 
 /*--main--*/
+.shop-list{
+	font-family: calibri;
+	font-weight: bold;
+	margin-left: 60px;
+}
 .main-content-agile {
     margin: 0 auto;
     background: rgba(255, 255, 255, 0.08);
@@ -275,6 +280,7 @@ input.checkbox:checked:after {
 
 /*--footer--*/
 .footer {
+	position: static;
     padding: 10em 0 14.7em;
 }
 .footer p {
@@ -343,7 +349,8 @@ input.checkbox:checked:after {
 		padding: 2.5em 0;
 	}
 	.main-content-agile {
-		width: 38%;
+		width: 60px;
+		float: left;
 	}
 	.footer {
 		padding: 3em 0;
