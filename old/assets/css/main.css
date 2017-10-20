@@ -703,13 +703,13 @@
 		}
 
 /* Main */
-
+	
 	#main {
 		position: relative;
 		max-width: 200%;
 		min-width: 47em;
 		padding: 4.5em 3em 3em 3em ;
-		background: black;
+		
 		border-radius: 4px;
 		cursor: default;
 		opacity: 0.95;
@@ -833,8 +833,8 @@
 		-ms-perspective: 1000px;
 		perspective: 1000px;
 		position: relative;
-		min-height: 100%;
-		padding: 1.5em;
+		min-height: 50%;
+		padding: .5em;
 		z-index: 2;
 	}
 
