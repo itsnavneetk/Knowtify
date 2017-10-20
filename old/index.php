@@ -25,9 +25,8 @@
 
 						<header>
 							<span class="avatar"><img src="https://www.gravatar.com/avatar/d4f909e9619c6295cc268fe7ae3a2255?s=420" width="125px" height="125px" />
-                            <h3 style="font-weight: bold">Navneet Kishan</h3>
+                            <h3 style="font-weight: bold;margin-top: 10px;">Navneet Kishan</h3>
                             </span>
-							
 						</header>
 						<!--
 							
@@ -77,7 +76,9 @@
 							</ul>
 						</footer>
 					</section>
-
+                    <div>
+                        <button><a href="./index.php">Refersh!</a></button>
+                    </div>
 				<!-- Footer -->
 					<footer id="footer">
 						<ul class="copyright">
