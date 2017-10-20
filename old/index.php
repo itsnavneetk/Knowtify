@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE HTML>
 <!--
 	Identity by HTML5 UP
@@ -25,46 +28,12 @@
 
 						<header>
 							<span class="avatar"><img src="https://www.gravatar.com/avatar/d4f909e9619c6295cc268fe7ae3a2255?s=420" width="125px" height="125px" />
-                            <h3 style="font-weight: bold;margin-top: 10px;">Navneet Kishan</h3>
+                            <h3 style="font-weight: bold;margin-top: 10px;"><?php echo $_SESSION["username"]; ?></h3>
                             </span>
 						</header>
 						<!--
 							
-						<hr />
 						
-						<form method="post" action="#">
-							<div class="field">
-								
-							</div>
-							<div class="field">
-								
-							</div>
-							
-							<div class="field">
-								<div class="select-wrapper">
-									<select name="department" id="department">
-										<option value="">Department</option>
-										<option value="sales">Sales</option>
-										<option value="tech">Tech Support</option>
-										<option value="null">/dev/null</option>
-									</select>
-								</div>
-							</div>
-							<div class="field">
-								<textarea name="message" id="message" placeholder="Message" rows="4"></textarea>
-							</div>
-							<div class="field">
-								<input type="checkbox" id="human" name="human" /><label for="human">I'm a human</label>
-							</div>
-							<div class="field">
-								<label>But are you a robot?</label>
-								<input type="radio" id="robot_yes" name="robot" /><label for="robot_yes">Yes</label>
-								<input type="radio" id="robot_no" name="robot" /><label for="robot_no">No</label>
-							</div>
-							<ul class="actions">
-								<li><a href="#" class="button">Get Started</a></li>
-							</ul> 
-						</form>
 						<hr /> -->
 
 						<div id="mapCanvas" style="width:100%;height:500px"></div>
@@ -78,6 +47,13 @@
 					</section>
                     <div>
                         <button><a href="./index.php">Refersh!</a></button>
+                    </div><br>
+                    <div style=" position: relative; float: right;">
+                        
+<form action="php/logout.php" method="post" id="frmLogout">
+Click to <input type="submit" name="logout" value="Logout" class="logout-button">.</div>
+</form>
+
                     </div>
 				<!-- Footer -->
 					<footer id="footer">

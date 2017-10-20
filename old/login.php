@@ -1,9 +1,5 @@
+
 <!DOCTYPE HTML>
-<!--
-    Identity by HTML5 UP
-    html5up.net | @ajlkn
-    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
     <head>
         <title>Identity by HTML5 UP</title>
@@ -30,7 +26,7 @@
         <div class="main-content-agile">
             <div class="sub-main-w3">   
                 <h2>Sign In</h2>
-                <form action="#" method="post">
+                <form action="php/login.php" method="post">
                     <h6>Swiftly sign in with</h6>
                     <div class="navbar-right social-icons"> 
                         <a href="#" class="one-w3ls" ><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a>
@@ -39,11 +35,11 @@
                     </div>
                     <h6>Or use your email</h6>
                     <div class="icon1">
-                        <input placeholder="Email" name="mail" type="email" required="">
+                        <input placeholder="Email" name="username" type="text" required="" style="color: black;">
                     </div>
                     
                     <div class="icon2">
-                        <input  placeholder="Password" name="Password" type="password" required="">
+                        <input  placeholder="Password" name="password" type="password" required="" style="color: black;">
                     </div>
                     <label class="anim">
                     <input type="checkbox" class="checkbox">
@@ -52,6 +48,7 @@
                     </label> 
                         <div class="clear"></div>
                     <input type="submit" value="Sign in">
+                    
                 </form>
             </div>
         </div>
