@@ -605,7 +605,6 @@
 		dl dd {
 			margin-left: 1.5em;
 		}
-
 /* Button */
 
 	input[type="submit"],
@@ -703,13 +702,36 @@
 		}
 
 /* Main */
-	
+	#login-main{
+		border: solid 3px;
+		position: relative;
+		top: 75px;
+		color: white;
+		max-width: 200%;
+		min-width: 47em;
+		padding: 3em 3em 3em 3em ;
+		border-radius: 4px;
+		cursor: default;
+		text-align: center;
+		-moz-transform-origin: 50% 50%;
+		-webkit-transform-origin: 50% 50%;
+		-ms-transform-origin: 50% 50%;
+		transform-origin: 50% 50%;
+		-moz-transform: rotateX(0deg);
+		-webkit-transform: rotateX(0deg);
+		-ms-transform: rotateX(0deg);
+		transform: rotateX(0deg);
+		-moz-transition: opacity 1s ease, -moz-transform 1s ease;
+		-webkit-transition: opacity 1s ease, -webkit-transform 1s ease;
+		-ms-transition: opacity 1s ease, -ms-transform 1s ease;
+		transition: opacity 1s ease, transform 1s ease;
+	}
+
 	#main {
 		position: relative;
 		max-width: 200%;
 		min-width: 47em;
 		padding: 4.5em 3em 3em 3em ;
-		
 		border-radius: 4px;
 		cursor: default;
 		opacity: 0.95;
