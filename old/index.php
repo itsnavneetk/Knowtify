@@ -27,7 +27,8 @@ session_start();
 					<section id="main" style="min-width: 47em">
 
 						<header>
-							<span class="avatar"><img src="https://www.gravatar.com/avatar/d4f909e9619c6295cc268fe7ae3a2255?s=420" width="125px" height="125px" />
+							<span class="avatar"><img src="https://tracker.moodle.org/secure/useravatar?size=small&avatarId=17388" width="125px" height="125px" />
+                                <!--https://jira.hyperledger.org/secure/useravatar?size=xsmall&avatarId=10341-->
                             <h3 style="font-weight: bold;margin-top: 10px;"><?php echo $_SESSION["username"]; ?></h3>
                             </span>
 						</header>
