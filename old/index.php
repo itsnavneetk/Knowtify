@@ -56,7 +56,7 @@ if (mysqli_num_rows($result) == 0) {
     echo "sorry";}
     else{
     while($row = mysqli_fetch_assoc($result)) {
-        echo "lat : ".$row["lat"]."</br>"."long : ".$row["longi"]."</br>"."Place : ".$row["place"]."</br>"."</br>";
+      
         $lat[$k] = $row["lat"];
         $long[$k] = $row["longi"];
         $place[$k] = $row["place"];
@@ -70,19 +70,6 @@ if (mysqli_num_rows($result) == 0) {
     
 }
 
-
-echo count($lat);
-echo count($long);
-echo count($place);
-echo "***entries fetched by php***";
-for ($row = 0; $row < 3; $row++) {
-  echo "<p><b>Row number $row</b></p>";
-  echo "<ul>";
-  for ($col = 0; $col < 3; $col++) {
-    echo "<li>".$coordsPHP[$row][$col]."</li>";
-  }
-  echo "</ul>";
-}
 ?>
 
 
