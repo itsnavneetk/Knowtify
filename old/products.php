@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 
 <!DOCTYPE HTML>
 <html>
@@ -19,43 +22,44 @@
                 <!-- Main -->
                     <section id="login-main" style="min-width: 47em">
                     <div class="header-w3l">
-            <h1>Knowtify</h1>
+            
         </div>
         <!--//header-->
         <!--main-->
         <div class="main-content-agile">
             <div class="sub-main-w3">   
-                <h2>Sign In</h2>
-                <form action="php/login.php" method="post">
-                    <h6>Swiftly sign in with</h6>
-                    <div class="navbar-right social-icons"> 
-                        <a href="#" class="one-w3ls" ><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a>
-                        <a href="#" class="two-w3ls" ><i class="fa fa-google-plus" aria-hidden="true"></i>Google+</a>
-                        <div class="clear"></div>
-                    </div>
-                    <h6>Or use your email</h6>
-                    <div class="icon1">
-                        <input placeholder="Email" name="username" type="text" required="" style="color: black;">
-                    </div>
-                    
-                    <div class="icon2">
-                        <input  placeholder="Password" name="password" type="password" required="" style="color: black;">
-                    </div>
-                    <label class="anim">
-                    <input type="checkbox" class="checkbox">
-                        <span>Remember Me</span> 
-                        <a href="#">Forgot Password</a>
-                    </label> 
-                        <div class="clear"></div>
-                    <input type="submit" value="Sign in">
-                    
-                </form>
+                <h2>Products</h2>
+<?php $sid = $_GET['sid']; 
+
+$dbhost="localhost";
+        $dbname="knowtify";
+        $dbuser="root";
+        $dbpass="";
+        $conn=mysqli_connect($dbhost,$dbuser,$dbpass,$dbname);
+        if(mysqli_connect_errno()){
+            die("database connection failed:".mysqli_connect_error()."(".mysqli_connect_errno().")");
+        }
+        $query="SELECT * FROM items where sid='$sid'";
+        $result=mysqli_query($conn,$query);
+        
+        echo "<form><table><tr><th>Product</th><th>Description</th><th>Price</th><th>Quantity</th><th></th></tr>";
+if (mysqli_num_rows($result) == 0) {
+    echo "sorry";}
+    else{
+    while($row = mysqli_fetch_assoc($result)) {
+      echo "<tr><td>".$row['name']."</td><td>".$row['descp']."</td><td>".$row['value']."</td><td>"."<input type='number' name='qty' ></td><td></td></tr>";
+        
+    }
+    
+}
+echo "</table><br><input type='submit' name='submit' value='Add to Cart'></form>";
+?>
             </div>
         </div>
         <!--//main-->
         <!--footer-->
         <div class="footer">
-            <p>&copy; 2017 Knowtify</p>
+            
         </div>
         <!--//footer-->
 <!-- js -->

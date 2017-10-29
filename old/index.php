@@ -70,6 +70,41 @@ if (mysqli_num_rows($result) == 0) {
     
 }
 
+$query="SELECT * FROM shop";
+
+        $result=mysqli_query($conn,$query);
+        
+        $sid = array();
+        $name = array();
+        $descp = array();
+        $open = array();
+        $close = array();
+        $str = array();
+        $k = 0;
+if (mysqli_num_rows($result) == 0) {
+    echo "sorry";}
+    else{
+    while($row = mysqli_fetch_assoc($result)) {
+      
+        $sid[$k] = $row["sid"];
+        $name[$k] = $row["name"];
+        $descp[$k] = $row["descp"];
+        $open[$k] = $row["open"];
+        $close[$k] = $row["close"];
+        $str[$k] = "Closed now";
+        $htmldesc = $row['html'];
+        date_default_timezone_set('Asia/Kolkata');
+        $var = date('H');
+
+        if( $var >= $open[$k] && $var <= $close[$k]){
+          $str[$k] = "<h3>Open now</h3>";
+        }
+        $k = $k +1;
+
+    }
+    
+}
+
 ?>
 
 
@@ -154,10 +189,21 @@ var mymarker = ['My location', lats, lngs];
     ];
 */
     // Info window content
-    var myinfoWindowContent =['<div class="info_content">' +
+var myinfoWindowContent =['<div class="info_content">' +
     '<h3>ME</h3>' +
-    '<p></p>' + '</div>']; 
+    '<p></p>' + '</div>'];
 
+var sid = <?php echo json_encode($sid) ?>;
+var name = <?php echo json_encode($name) ?>;
+var descp = <?php echo json_encode($descp) ?>;
+var str =<?php echo json_encode($str) ?>;
+var infoWindowContent = []; while(infoWindowContent.push([]) < sid.length);
+
+for (var i = 0; i < sid.length; i++) {
+ infoWindowContent[i][0] = '<div class="info_content">'+'<h3>'+name[i]+'</h3>'+'<p>'+descp[i]+'</p>'+'<h3>'+str[i]+'</h3>'+'<button onclick="myFunction('+sid[i]+')" >NOTIFY!</button>'+'</div>';
+ 
+}
+/*
     var infoWindowContent = [
     ['<div class="info_content">' +
     '<h3>'+markers[0][0]+'</h3>' +
@@ -193,7 +239,7 @@ var mymarker = ['My location', lats, lngs];
     '<p>They offer rolls, baked cakes, samosas, puffs and coffee/tea </p>'+'<p><h3>HOT OFFERS</h3><h3>Happy Hours</h3></p>'+'<button onclick="myFunction(4)">NOTIFY!</button>'+
     '</div>']
     ];
-
+*/
     var image = {
       url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
           // This marker is 20 pixels wide by 32 pixels high.
@@ -285,7 +331,9 @@ var mymarker = ['My location', lats, lngs];
 <script>
     function myFunction(x) {
       {
-        location.href = "http://localhost:8888/angel/list"+x+".php";
+            
+        alert(x);
+        location.href = "http://localhost/knowtify/old/products.php?sid="+x;
     };
 }
 </script>

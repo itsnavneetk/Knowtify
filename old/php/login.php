@@ -21,7 +21,6 @@ $result=mysqli_query($conn,$query);
 
 if(mysqli_fetch_row($result))
     {
-        
         echo "successful";
         header('Location:../index.php');  
     }
