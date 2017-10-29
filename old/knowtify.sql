@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 29, 2017 at 06:36 AM
+-- Generation Time: Oct 29, 2017 at 11:49 AM
 -- Server version: 10.1.22-MariaDB
 -- PHP Version: 7.1.4
 
@@ -46,7 +46,7 @@ INSERT INTO `items` (`iid`, `sid`, `name`, `value`, `stock`, `descp`) VALUES
 (2, 1, 'earphones', 900, 30, 'soundproof jbl earphones'),
 (3, 1, 'watch', 1200, 5, 'fastrack'),
 (4, 1, 'pen', 25, 20, 'cello'),
-(5, 1, 'phone', 5, 40000, 'samsung galaxy'),
+(5, 1, 'phone', 40000, 5, 'samsung galaxy'),
 (6, 1, 'muffin', 30, 100, 'strawberry muffin'),
 (7, 1, 'bag', 700, 50, 'brown waterproof bag'),
 (8, 1, 'umbrella', 300, 50, 'yellow umbrella'),
@@ -143,17 +143,22 @@ CREATE TABLE `shop` (
   `descp` varchar(140) COLLATE utf8_bin NOT NULL,
   `open` int(11) NOT NULL,
   `close` int(11) NOT NULL,
-  `uid` int(11) NOT NULL
+  `uid` int(11) NOT NULL,
+  `html` varchar(200) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `shop`
 --
 
-INSERT INTO `shop` (`sid`, `name`, `descp`, `open`, `close`, `uid`) VALUES
-(1, 'Campus Store', 'this is 1st shop', 9, 22, 1),
-(2, 'Apoorva Mess', 'This is Apoorva ', 9, 23, 2),
-(3, 'HigginBotham\'s', 'This is Higginbo', 10, 17, 5);
+INSERT INTO `shop` (`sid`, `name`, `descp`, `open`, `close`, `uid`, `html`) VALUES
+(1, 'Campus Store', 'This is campus store', 9, 22, 1, ''),
+(2, 'Apoorva Mess', 'Varied options and low prices plus food quality is amazing', 9, 23, 2, ''),
+(3, 'HigginBotham\'s', 'This is Higginbotham\'s', 10, 17, 5, ''),
+(4, 'Food Court', 'The ambience of this place is just amazing coupled with the quality food', 6, 23, 2, ''),
+(5, 'Aditya Mess', 'Decent food at affordable rates and the staff are friendly', 6, 23, 2, ''),
+(6, 'Some far location', 'They offer rolls, baked cakes, samosas, puffs and coffee/tea ', 1, 25, 1, ''),
+(7, 'Some far location', 'Some far location', 1, 25, 1, '');
 
 -- --------------------------------------------------------
 
@@ -243,7 +248,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `shop`
 --
 ALTER TABLE `shop`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `userinfo`
 --
