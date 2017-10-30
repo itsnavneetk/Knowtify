@@ -2,6 +2,14 @@
 session_start();
 ?>
 <?php
+include 'connection.php';
+
+//Set useful variables for paypal form
+$paypal_link = 'https://www.sandbox.paypal.com/cgi-bin/webscr'; //Test PayPal API URL
+$paypal_username = 'itsnavneet@gmail.com'; //Business Email
+
+?>
+<?php
         $dbhost="localhost";
         $dbname="knowtify";
         $dbuser="root";
@@ -11,6 +19,14 @@ session_start();
             die("database connection failed:".mysqli_connect_error()."(".mysqli_connect_errno().")");
         }
         ?>
+        <?php
+include 'connection.php';
+
+//Set useful variables for paypal form
+$paypal_link = 'https://www.sandbox.paypal.com/cgi-bin/webscr'; //Test PayPal API URL
+$paypal_username = 'itsnavneetk@gmail.com'; //Business Email
+
+?>
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -31,7 +47,7 @@ session_start();
                 <!-- Main -->
                     <section id="login-main" style="min-width: 47em">
                     <div class="header-w3l">
-            <h1>Knowtify</h1>
+            <h1 onclick="window.location='index.php';">Knowtify</h1>
         </div>
         <!--//header-->
         <!--main-->
@@ -57,9 +73,10 @@ session_start();
                 }
         }
         ?>
-        <input type="button" value='Pay <?php echo $item_total?>' onclick="window.location='index.php';">
-        
-        </div>
+        <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="submit" value='Pay <?php echo $item_total?>' >
+        </form>
+             
         </div>
         <!--//main-->
         <!--footer-->
@@ -93,5 +110,40 @@ session_start();
                     document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
                 }
             </script>
+
+<?php
+        //fetch products from the database
+
+    $row['name'] = 'knowtify-order';
+    $row['price'] = $item_total;
+    $row['id'] = $sid;
+        
+    ?>
+    <form action="<?php echo $paypal_link; ?>" method="post">
+
+        <!-- Identify your business so that you can collect the payments. -->
+        <input type="hidden" name="business" value="<?php echo $paypal_username; ?>">
+        
+        <!-- Specify a Buy Now button. -->
+        <input type="hidden" name="cmd" value="_xclick">
+        
+        <!-- Specify details about the item that buyers will purchase. -->
+        <input type="hidden" name="item_name" value="<?php echo $row['name']; ?>">
+        <input type="hidden" name="item_number" value="<?php echo $row['id']; ?>">
+        <input type="hidden" name="amount" value="<?php echo $row['price']; ?>">
+        <input type="hidden" name="currency_code" value="USD">
+        
+        <!-- Specify URLs -->
+        <input type='hidden' name='cancel_return' value='http://localhost/paypal_integration_php/paypal_cancel.php'>
+        <input type='hidden' name='return' value='http://localhost/paypal_integration_php/paypal_success.php'>
+
+        
+        <!-- Display the payment button. -->
+        <input type="image" name="submit" border="0"
+        src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" alt="PayPal - The safer, easier way to pay online">
+        <img alt="" border="0" width="1" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
+    
+    </form>
+
     </body>
 </html>

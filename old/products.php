@@ -88,14 +88,14 @@ tr, td, th{
 
                 <!-- Main -->
                     <section id="login-main" style="min-width: 47em">
-                    <div class="header-w3l">
-            
+               <div class="header-w3l">
+            <h1 onclick="window.location='index.php';">Knowtify</h1>
         </div>
         <!--//header-->
         <!--main-->
         <div class="main-content-agile">
             <div class="sub-main-w3">   
-                <h2>Products</h2>
+                <h2></h2>
 <div id="shopping-cart">
 <div class="txt-heading">Shopping Cart <a id="btnEmpty" href="products.php?action=empty">Empty Cart</a></div>
 <?php
@@ -130,7 +130,7 @@ if(isset($_SESSION["cart_item"])){
 </tbody>
 </table>       
 <?php $_SESSION["total"] = $item_total; ?>
-<input type="submit" value="Proceed to Checkout" onclick="window.location='checkout.php';" style="float: right; margin: 10px; z-index: 33;"><br>
+<input type="submit" value="Proceed to Checkout" onclick="window.location='PayPal/index.php';" style="float: right; margin: 10px; z-index: 33;"><br>
   <?php
 }
 ?>

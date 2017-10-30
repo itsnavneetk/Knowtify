@@ -1,1 +1,0 @@
-Thank you! Payment completed.

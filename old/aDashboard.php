@@ -1,4 +1,16 @@
+<?php
+session_start();
 
+        $dbhost="localhost";
+        $dbname="knowtify";
+        $dbuser="root";
+        $dbpass="";
+        $conn=mysqli_connect($dbhost,$dbuser,$dbpass,$dbname);
+        if(mysqli_connect_errno()){
+            die("database connection failed:".mysqli_connect_error()."(".mysqli_connect_errno().")");
+        }
+
+?>
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -10,6 +22,15 @@
         <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
         <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
         <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+        <style type="text/css">
+            table, tr, td{
+                padding: 5px;
+                text-align: center;
+            }
+            table{
+                margin-left: 18%;
+            }
+        </style>
     </head>
     <body class="is-loading">
 
@@ -19,40 +40,50 @@
                 <!-- Main -->
                     <section id="login-main" style="min-width: 47em">
                     <div class="header-w3l">
-            <h1>Knowtify</h1>
+            <h1 onclick="window.location='index.php';">Knowtify</h1>
         </div>
         <!--//header-->
         <!--main-->
         <div class="main-content-agile">
             <div class="sub-main-w3">   
-                <h2>Admin Sign In</h2>
-                <form action="php/loginA.php" method="post">
+                <h2>Admin Dashboard</h2>
+                    <h3>Orders</h3>
+<div id="product-grid">
+    <div class="txt-heading"></div>
+    <?php
+    $uid = $_SESSION["uid"];
 
-                    <div class="navbar-right social-icons"> 
-                        <a href="#" class="one-w3ls" ><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a>
-                        <a href="#" class="two-w3ls" ><i class="fa fa-google-plus" aria-hidden="true"></i>Google+</a>
-                        <div class="clear"></div>
-                    </div>
-
-                    <div class="icon1">
-                        <input placeholder="Email" name="username" type="text" required="" style="color: black;">
-                    </div>
-                    
-                    <div class="icon2">
-                        <input  placeholder="Password" name="password" type="password" required="" style="color: black;">
-                    </div>
-                    <label class="anim">
-
-                    </label> 
-                        <div class="clear"></div>
-                    <input type="submit" value="Sign in">
-                    <input type="button" value="Sign up" onclick="window.location='register.php';">
-                </form>
+    $query="SELECT * FROM shop WHERE uid ='$uid'";
+    $result=mysqli_query($conn,$query);
+        if (mysqli_num_rows($result) == 0) {
+    echo "sorry";}
+    else{
+    while($row = mysqli_fetch_assoc($result)) {
+        $_SESSION["shopid"]=$row['sid'];
+        $sid = $row['sid'];
+    }
+}
+?>
+<table><tr><th>Order ID</th><th>Item</th><th>Quantity</th><th>Price</th><th>Buyer</th></tr>
+<?php
+$query="SELECT * FROM order1 WHERE sid ='$sid'";
+    $result=mysqli_query($conn,$query);
+        if (mysqli_num_rows($result) == 0) {
+    echo "sorry";}
+    else{
+    while($row = mysqli_fetch_assoc($result)) {
+        echo "<tr><td>".$row['oid']."</td>"."<td>".$row['item']."</td>"."<td>".$row['quantity']."</td>"."<td>".$row['price']."</td>"."<td>".$row['uid']."</td></tr>";
+    }
+}
+        
+   ?>
+</table>
             </div>
         </div>
         <!--//main-->
         <!--footer-->
         <div class="footer">
+            <br>
             <p>&copy; 2017 Knowtify</p>
         </div>
         <!--//footer-->
