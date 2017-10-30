@@ -25,19 +25,23 @@
         <!--main-->
         <div class="main-content-agile">
             <div class="sub-main-w3">   
-                <h2>Sign In</h2>
-                <form action="php/login.php" method="post">
+                <h2>Sign Up</h2>
+                <form action="php/register.php" method="post">
 
                     <div class="navbar-right social-icons"> 
                         <a href="#" class="one-w3ls" ><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a>
                         <a href="#" class="two-w3ls" ><i class="fa fa-google-plus" aria-hidden="true"></i>Google+</a>
                         <div class="clear"></div>
                     </div>
-
+                    <div class="icon1">
+                        <input  placeholder="Name" name="name" type="text" required="" style="color: black;">
+                    </div>
                     <div class="icon1">
                         <input placeholder="Email" name="username" type="text" required="" style="color: black;">
                     </div>
-                    
+                    <div class="icon2">
+                        <input  placeholder="  Phone Number" name="phone" type="number" required="" style="color: black; width: 100%;">
+                    </div>
                     <div class="icon2">
                         <input  placeholder="Password" name="password" type="password" required="" style="color: black;">
                     </div>
@@ -45,8 +49,7 @@
 
                     </label> 
                         <div class="clear"></div>
-                    <input type="submit" value="Sign in">
-                    <input type="button" value="Sign up" onclick="window.location='register.php';">
+                    <input type="submit" value="Register">                    
                 </form>
             </div>
         </div>
