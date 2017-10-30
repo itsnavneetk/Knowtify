@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 29, 2017 at 11:49 AM
+-- Generation Time: Oct 30, 2017 at 06:34 PM
 -- Server version: 10.1.22-MariaDB
 -- PHP Version: 7.1.4
 
@@ -29,10 +29,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `items` (
-  `iid` int(11) NOT NULL,
+  `code` int(11) NOT NULL,
   `sid` int(11) NOT NULL,
   `name` varchar(18) COLLATE utf8_bin NOT NULL,
-  `value` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
   `stock` int(11) NOT NULL,
   `descp` varchar(24) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
@@ -41,7 +41,7 @@ CREATE TABLE `items` (
 -- Dumping data for table `items`
 --
 
-INSERT INTO `items` (`iid`, `sid`, `name`, `value`, `stock`, `descp`) VALUES
+INSERT INTO `items` (`code`, `sid`, `name`, `price`, `stock`, `descp`) VALUES
 (1, 1, 'book', 300, 50, 'Kane and Abel'),
 (2, 1, 'earphones', 900, 30, 'soundproof jbl earphones'),
 (3, 1, 'watch', 1200, 5, 'fastrack'),
@@ -134,6 +134,41 @@ CREATE TABLE `offers` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `order1`
+--
+
+CREATE TABLE `order1` (
+  `oid` int(100) NOT NULL,
+  `sid` int(10) NOT NULL,
+  `item` varchar(100) COLLATE utf8_bin NOT NULL,
+  `quantity` varchar(10) COLLATE utf8_bin NOT NULL,
+  `price` varchar(100) COLLATE utf8_bin NOT NULL,
+  `uid` varchar(100) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `order1`
+--
+
+INSERT INTO `order1` (`oid`, `sid`, `item`, `quantity`, `price`, `uid`) VALUES
+(1, 3, 'ES lab manual', '1', '300', 'navneet'),
+(2, 3, 'DAA lab manual', '1', '300', 'navneet'),
+(3, 3, 'ITT lab manual', '4', '300', 'navneet'),
+(4, 3, 'ES lab manual', '1', '300', 'navneet'),
+(5, 3, 'DAA lab manual', '1', '300', 'navneet'),
+(6, 3, 'ITT lab manual', '4', '300', 'navneet'),
+(7, 3, 'ES lab manual', '1', '300', 'navneet'),
+(8, 3, 'DAA lab manual', '1', '300', 'navneet'),
+(9, 3, 'ITT lab manual', '4', '300', 'navneet'),
+(10, 3, 'ES lab manual', '1', '300', 'navneet'),
+(11, 3, 'DAA lab manual', '1', '300', 'navneet'),
+(12, 3, 'ITT lab manual', '4', '300', 'navneet'),
+(13, 3, 'ES lab manual', '2', '300', 'navneet'),
+(14, 3, 'DAA lab manual', '1', '300', 'navneet');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `shop`
 --
 
@@ -169,7 +204,7 @@ INSERT INTO `shop` (`sid`, `name`, `descp`, `open`, `close`, `uid`, `html`) VALU
 CREATE TABLE `userinfo` (
   `uid` int(11) NOT NULL,
   `name` varchar(7) COLLATE utf8_bin NOT NULL,
-  `email` int(11) NOT NULL,
+  `email` varchar(11) COLLATE utf8_bin NOT NULL,
   `phone` varchar(17) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -178,12 +213,12 @@ CREATE TABLE `userinfo` (
 --
 
 INSERT INTO `userinfo` (`uid`, `name`, `email`, `phone`) VALUES
-(1, 'navneet', 2147483647, 'navneet@gmail.com'),
-(2, 'kaivan', 2147483647, 'kaivan@gmail.com'),
-(3, 'aeshani', 2147483647, 'aeshani@gmail.com'),
-(4, 'yash', 2147483647, 'yash@gmail.com'),
-(5, 'bharat', 2147483647, 'bharat@gmail.com'),
-(6, 'saumya', 2147483647, 'saumya@gmail.com');
+(1, 'navneet', '2147483647', 'navneet@gmail.com'),
+(2, 'kaivan', '2147483647', 'kaivan@gmail.com'),
+(3, 'aeshani', '2147483647', 'aeshani@gmail.com'),
+(4, 'yash', '2147483647', 'yash@gmail.com'),
+(5, 'bharat', '2147483647', 'bharat@gmail.com'),
+(6, 'saumya', '2147483647', 'saumya@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -193,7 +228,7 @@ INSERT INTO `userinfo` (`uid`, `name`, `email`, `phone`) VALUES
 -- Indexes for table `items`
 --
 ALTER TABLE `items`
-  ADD PRIMARY KEY (`iid`);
+  ADD PRIMARY KEY (`code`);
 
 --
 -- Indexes for table `location`
@@ -211,6 +246,12 @@ ALTER TABLE `login`
 -- Indexes for table `offers`
 --
 ALTER TABLE `offers`
+  ADD PRIMARY KEY (`oid`);
+
+--
+-- Indexes for table `order1`
+--
+ALTER TABLE `order1`
   ADD PRIMARY KEY (`oid`);
 
 --
@@ -233,7 +274,7 @@ ALTER TABLE `userinfo`
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `iid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `code` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `location`
 --
@@ -243,7 +284,12 @@ ALTER TABLE `location`
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `uid` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `uid` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT for table `order1`
+--
+ALTER TABLE `order1`
+  MODIFY `oid` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `shop`
 --
@@ -253,7 +299,7 @@ ALTER TABLE `shop`
 -- AUTO_INCREMENT for table `userinfo`
 --
 ALTER TABLE `userinfo`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;COMMIT;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
