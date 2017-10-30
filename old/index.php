@@ -332,7 +332,7 @@ for (var i = 0; i < sid.length; i++) {
     function myFunction(x) {
       {
             
-        alert(x);
+    //    alert(x);
         location.href = "http://localhost/knowtify/old/products.php?sid="+x;
     };
 }

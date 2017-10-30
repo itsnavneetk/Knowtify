@@ -1,10 +1,14 @@
 <?php
 session_start();
+error_reporting(0);
 require_once("dbcontroller.php");
 $db_handle = new DBController();
-
-$sid = 1;//$_GET['sid'];
-
+if($_GET['sid']){
+    $sid = $_GET['sid'];    
+    $_SESSION["sid"] = $sid;
+}
+    $sid = $_SESSION["sid"];
+ 
 
 if(!empty($_GET["action"])) {
 switch($_GET["action"]) {
@@ -72,6 +76,8 @@ tr, td, th{
     padding-left: 10px;
 }input[type="number"] {
     color: black;
+}strong {
+    font-weight: bold;
 }
         </style>
     </head>
@@ -119,10 +125,12 @@ if(isset($_SESSION["cart_item"])){
         ?>
 
 <tr>
-<td colspan="5" align=right><strong>Total:</strong> <?php echo "₹".$item_total; ?></td>
+<td colspan="4" align=right><strong>Total:</strong> <?php echo "₹".$item_total; ?></td>
 </tr>
 </tbody>
-</table>        
+</table>       
+<?php $_SESSION["total"] = $item_total; ?>
+<input type="submit" value="Proceed to Checkout" onclick="window.location='checkout.php';" style="float: right; margin: 10px; z-index: 33;"><br>
   <?php
 }
 ?>
@@ -147,7 +155,11 @@ if(isset($_SESSION["cart_item"])){
             }
     }
     ?>
+    <input type="button" value="Back" onclick="window.location='index.php';">
 </div>
+  <div class="footer">
+            <p>&copy; 2017 Knowtify</p>
+        </div>
 <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 <script src="js/jquery.vide.min.js"></script>
 <!-- //js -->
