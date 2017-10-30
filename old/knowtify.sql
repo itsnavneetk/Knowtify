@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 30, 2017 at 06:34 PM
+-- Generation Time: Oct 30, 2017 at 09:18 PM
 -- Server version: 10.1.22-MariaDB
 -- PHP Version: 7.1.4
 
@@ -143,28 +143,18 @@ CREATE TABLE `order1` (
   `item` varchar(100) COLLATE utf8_bin NOT NULL,
   `quantity` varchar(10) COLLATE utf8_bin NOT NULL,
   `price` varchar(100) COLLATE utf8_bin NOT NULL,
-  `uid` varchar(100) COLLATE utf8_bin NOT NULL
+  `uid` varchar(100) COLLATE utf8_bin NOT NULL,
+  `ownerId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `order1`
 --
 
-INSERT INTO `order1` (`oid`, `sid`, `item`, `quantity`, `price`, `uid`) VALUES
-(1, 3, 'ES lab manual', '1', '300', 'navneet'),
-(2, 3, 'DAA lab manual', '1', '300', 'navneet'),
-(3, 3, 'ITT lab manual', '4', '300', 'navneet'),
-(4, 3, 'ES lab manual', '1', '300', 'navneet'),
-(5, 3, 'DAA lab manual', '1', '300', 'navneet'),
-(6, 3, 'ITT lab manual', '4', '300', 'navneet'),
-(7, 3, 'ES lab manual', '1', '300', 'navneet'),
-(8, 3, 'DAA lab manual', '1', '300', 'navneet'),
-(9, 3, 'ITT lab manual', '4', '300', 'navneet'),
-(10, 3, 'ES lab manual', '1', '300', 'navneet'),
-(11, 3, 'DAA lab manual', '1', '300', 'navneet'),
-(12, 3, 'ITT lab manual', '4', '300', 'navneet'),
-(13, 3, 'ES lab manual', '2', '300', 'navneet'),
-(14, 3, 'DAA lab manual', '1', '300', 'navneet');
+INSERT INTO `order1` (`oid`, `sid`, `item`, `quantity`, `price`, `uid`, `ownerId`) VALUES
+(65, 1, 'book', '3', '300', 'aeshani', 0),
+(66, 1, 'watch', '2', '1200', 'aeshani', 0),
+(67, 1, 'pen', '1', '25', 'aeshani', 0);
 
 -- --------------------------------------------------------
 
@@ -192,8 +182,8 @@ INSERT INTO `shop` (`sid`, `name`, `descp`, `open`, `close`, `uid`, `html`) VALU
 (3, 'HigginBotham\'s', 'This is Higginbotham\'s', 10, 17, 5, ''),
 (4, 'Food Court', 'The ambience of this place is just amazing coupled with the quality food', 6, 23, 2, ''),
 (5, 'Aditya Mess', 'Decent food at affordable rates and the staff are friendly', 6, 23, 2, ''),
-(6, 'Some far location', 'They offer rolls, baked cakes, samosas, puffs and coffee/tea ', 1, 25, 1, ''),
-(7, 'Some far location', 'Some far location', 1, 25, 1, '');
+(6, 'Some far location', 'They offer rolls, baked cakes, samosas, puffs and coffee/tea ', 1, 25, 2, ''),
+(7, 'Some far location', 'Some far location', 1, 25, 2, '');
 
 -- --------------------------------------------------------
 
@@ -289,7 +279,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `order1`
 --
 ALTER TABLE `order1`
-  MODIFY `oid` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `oid` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 --
 -- AUTO_INCREMENT for table `shop`
 --
